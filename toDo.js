@@ -1,23 +1,34 @@
 var todoList = {
-    todos: ['Todo 1', 'Todo 2', 'Todo 3'],
-    
-    displayTodos: function() {
-            console.log('My todos: ' + this.todos);
+    todos: [],
+    displayTodo: function() {
+        console.log("My Todo List: " + this.todos);
     },
-    addTodo: function(todo) {
-        this.todos.push(todo);
-        this.displayTodos();
+    
+    addTodo: function (todoText) {
+        this.todos.push({
+            todoText: todoText,
+            completed: false
+        });
+        this.displayTodo();
     },
     
     deleteTodo: function(position) {
         this.todos.splice(position, 1);
-        this.displayTodos();
+        this.displayTodo();
     },
     
-    changeTodo: function(position, newTodo) {
-        this.todos[position] = newTodo;
-        this.displayTodos();
+    changeTodo: function(position, todoText){
+        this.todos[position].todoText= todoText;
+        this.displayTodo();
+    },
+    
+    toggleCompleted: function(position) {
+        var todo = this.todos[position];
+        todo.completed = !todo.completed;
+        this.displayTodo();
     }
+    
     
 };
 
+// didnt realize i had to commit earlier versions, sorry! 
