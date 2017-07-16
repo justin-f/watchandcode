@@ -64,14 +64,26 @@ var todoList = {
             }
         }
         this.displayTodo(); 
+   
     }
-    
-    
-        
-        
-    
-    
-    
 };
+
+    
+    var displaytodoButton = document.getElementById('displayTodos');
+    var toggleAll = document.getElementById('toggleAll');
+    
+    displaytodoButton.addEventListener('click', function () {
+        todoList.displayTodo();
+            });
+    
+    toggleAll.addEventListener('click', function () {
+        todoList.toggleAll();
+    });
+        
+        
+   
+    
+    
+
 
 // didnt realize i had to commit earlier versions, sorry! 
