@@ -1,21 +1,21 @@
 var todoList = {
     todos: [],
-    displayTodo: function() {
+    // displayTodo: function() {
         
-        if (this.todos.length === 0) {
-            console.log("Todo list is empty, you are lucky!");
-        } else {
-            console.log("My Todo List:");
-        for (var i = 0; i < this.todos.length; i++) {
-              if (this.todos[i].completed === true) {
-                 console.log("(X) " + this.todos[i].todoText);
-        } else {
-                 console.log("( )" + this.todos[i].todoText);
-            }
-          }
-        }
+    //     if (this.todos.length === 0) {
+    //         console.log("Todo list is empty, you are lucky!");
+    //     } else {
+    //         console.log("My Todo List:");
+    //     for (var i = 0; i < this.todos.length; i++) {
+    //           if (this.todos[i].completed === true) {
+    //              console.log("(X) " + this.todos[i].todoText);
+    //     } else {
+    //              console.log("( )" + this.todos[i].todoText);
+    //         }
+    //       }
+    //     }
         
-    },
+    // },
     
     addTodo: function (todoText) {
         this.todos.push({
@@ -27,18 +27,18 @@ var todoList = {
     
     deleteTodo: function(position) {
         this.todos.splice(position, 1);
-        this.displayTodo();
+       
     },
     
     changeTodo: function(position, todoText){
         this.todos[position].todoText= todoText;
-        this.displayTodo();
+        
     },
     
     toggleCompleted: function(position) {
         var todo = this.todos[position];
         todo.completed = !todo.completed;
-        this.displayTodo();
+       
     },
     
     toggleAll: function() {
@@ -63,7 +63,7 @@ var todoList = {
                 this.todos[i].completed = true;
             }
         }
-        this.displayTodo(); 
+        
    
     }
 };
@@ -81,16 +81,18 @@ var todoList = {
     // });
     
     var handlers = {
-        displayTodo: function() {
-            todoList.displayTodo();
-        },
+        // displayTodo: function() {
+        //     todoList.displayTodo();
+        // },
         toggleAll: function() {
             todoList.toggleAll();
+            view.displayTodos();
         },
         addTodo: function() {
             var addTodoText = document.getElementById('addTodoText');
             todoList.addTodo(addTodoText.value);
             addTodoText.value = '';
+            view.displayTodos();
         },
         changeTodo: function() {
             var changeTodoPosition = document.getElementById('changeTodoPosition');
@@ -98,18 +100,21 @@ var todoList = {
             todoList.changeTodo(changeTodoPosition.valueAsNumber, changeTodoText.value);
             changeTodoPosition.value = '';
             changeTodoText.value = '';
+            view.displayTodos();
         },
         
         deleteTodo: function() {
             var deleteTodoPosition = document.getElementById('deleteTodoPosition');
             todoList.deleteTodo(deleteTodoPosition.valueAsNumber);
             deleteTodoPosition.value = '';
+            view.displayTodos();
         },
         
         toggleCompleted: function() {
             var toggleCompletedPosition = document.getElementById('toggleCompletedPosition');
             todoList.toggleCompleted(toggleCompletedPosition.valueAsNumber);
             toggleCompletedPosition.value = '';
+            view.displayTodos();
         }
         };
         
@@ -119,6 +124,14 @@ var todoList = {
             todoUl.innerHTML = '';
             for(var i = 0; i < todoList.todos.length; i++) {
                 var todoLi = document.createElement('li');
+                var todoTextCompleted = '';
+                
+                if (todoList.todos[i].completed === true) {
+                    todoTextCompleted = '(X) ' + todoList.todos[i].todoText
+                } else { 
+                    todoTextCompleted = '( ) ' + todoList.todos[i].todoText
+                }
+                todoLi.textContent = todoTextCompleted;
                 todoUl.appendChild(todoLi) 
         }
         }
