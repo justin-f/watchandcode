@@ -1,14 +1,40 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <script src="toDo.js"></script>
+    
     <meta charset="UTF-8">
     <title>Document</title>
 </head>
 <body>
-    <button id="displayTodos">What do i have to do?</button>
-    <button id="toggleAll">Toggle All</button>
     
+    <div>
+        <button onClick="handlers.displayTodo()">What do i have to do?</button>
+        <button onCLick="handlers.toggleAll()">Toggle All</button>
+    </div>
+    
+    <div>
+        <button onCLick="handlers.addTodo()">Add</button>
+        <input id="addTodoText" type="text">
+    </div>
+    
+    <div>
+        <button onClick="handlers.changeTodo()">Change Todo</button>
+        <input id="changeTodoPosition" type="number"><input id="changeTodoText" type="text">
+    </div>
+    
+    <div>
+        <button onClick="handlers.deleteTodo()">Delete Todo</button>
+        <input id="deleteTodoPosition" type="number">
+    </div>
+    
+    <div>
+        <button onClick="handlers.toggleCompleted()">Toggle Completed</button>
+        <input id="toggleCompletedPosition" type="number">
+    </div>
+    
+    <ul>
+        
+    </ul>
     
     <script src="toDo.js"></script>
 </body>

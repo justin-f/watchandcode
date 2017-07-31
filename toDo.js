@@ -69,18 +69,61 @@ var todoList = {
 };
 
     
-    var displaytodoButton = document.getElementById('displayTodos');
-    var toggleAll = document.getElementById('toggleAll');
+    // var displaytodoButton = document.getElementById('displayTodos');
+    // var toggleAll = document.getElementById('toggleAll');
     
-    displaytodoButton.addEventListener('click', function () {
-        todoList.displayTodo();
-            });
+    // displaytodoButton.addEventListener('click', function () {
+    //     todoList.displayTodo();
+    //         });
     
-    toggleAll.addEventListener('click', function () {
-        todoList.toggleAll();
-    });
+    // toggleAll.addEventListener('click', function () {
+    //     todoList.toggleAll();
+    // });
+    
+    var handlers = {
+        displayTodo: function() {
+            todoList.displayTodo();
+        },
+        toggleAll: function() {
+            todoList.toggleAll();
+        },
+        addTodo: function() {
+            var addTodoText = document.getElementById('addTodoText');
+            todoList.addTodo(addTodoText.value);
+            addTodoText.value = '';
+        },
+        changeTodo: function() {
+            var changeTodoPosition = document.getElementById('changeTodoPosition');
+            var changeTodoText = document.getElementById('changeTodoText');
+            todoList.changeTodo(changeTodoPosition.valueAsNumber, changeTodoText.value);
+            changeTodoPosition.value = '';
+            changeTodoText.value = '';
+        },
         
+        deleteTodo: function() {
+            var deleteTodoPosition = document.getElementById('deleteTodoPosition');
+            todoList.deleteTodo(deleteTodoPosition.valueAsNumber);
+            deleteTodoPosition.value = '';
+        },
         
+        toggleCompleted: function() {
+            var toggleCompletedPosition = document.getElementById('toggleCompletedPosition');
+            todoList.toggleCompleted(toggleCompletedPosition.valueAsNumber);
+            toggleCompletedPosition.value = '';
+        }
+        };
+        
+    var view = {
+        displayTodos: function() {
+            var todoUl = document.querySelector('ul');
+            todoUl.innerHTML = '';
+            for(var i = 0; i < todoList.todos.length; i++) {
+                var todoLi = document.createElement('li');
+                todoUl.appendChild(todoLi) 
+        }
+        }
+    }
+    
    
     
     
